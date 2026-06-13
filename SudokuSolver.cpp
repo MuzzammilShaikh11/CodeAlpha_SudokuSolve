@@ -1,39 +1,28 @@
 #include <iostream>
+
+#include <string>
 using namespace std;
 
 void createSudoku(int mat[9][9])
 {
-    cout << "\nEnter the Sudoku grid (use 0 for empty cells):\n";
+    string row;
+
+    cout << "\nPaste the 9 Sudoku rows:\n";
 
     for(int i = 0; i < 9; i++)
     {
-        for(int j = 0; j < 9; j++)
+        cin >> row;
+
+        if(row.length() != 9)
         {
-            cin >> mat[i][j];
+            cout << "Invalid input!\n";
+            return;
         }
-    }
-}
-
-void printSudoku(int mat[9][9])
-{
-    cout << "\n+-------+-------+-------+\n";
-
-    for(int i = 0; i < 9; i++)
-    {
-        cout << "| ";
 
         for(int j = 0; j < 9; j++)
         {
-            cout << mat[i][j] << " ";
-
-            if((j + 1) % 3 == 0)
-                cout << "| ";
+            mat[i][j] = row[j] - '0';
         }
-
-        cout << endl;
-
-        if((i + 1) % 3 == 0)
-            cout << "+-------+-------+-------+\n";
     }
 }
 
